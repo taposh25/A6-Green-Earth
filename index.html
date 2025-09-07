@@ -73,7 +73,7 @@
 
 
 <!-- main section -->
-    <main class="container mx-auto p-6 flex gap-6">
+    <main class="container bg-[#f3fdf8] mx-auto p-6 flex gap-6">
       <aside class="w-1/5">
       <h2 class="text-xl text-left font-semibold mb-4">Categories</h2>
       <ul id="categories" class="space-y-2">
@@ -111,27 +111,43 @@
   </dialog>
 
 
-
-    
   </main>
 
+
+
+
   <!-- About section -->
-  <section>
-    <h1 class="text-center font-semibold">About the Campaign</h1>
-    <div class="border-2 border red-500 w-[800px] mx-auto flex items-center text-center gap-6 ">
-      <img class="w-[300px] h-[300px]" src="./assets/about.png" alt="">
+  <section class="bg-[#f3fdf8] py-12 px-6">
+
+      <h2 class="text-2xl font-bold mb-4 text-[#1F2937] text-center md:text-center mb-20">
+          About the Campaign
+      </h2>
+    
+    <div class="max-w-[730px] mx-auto grid md:grid-cols-2 gap-8 items-center ">
+
+      
+      <!-- Image -->
+      <div class="flex justify-center w-[330px] h-[330px] ">
+        <img src="./assets/about.png" alt="Tree" class="rounded-lg shadow-md w-full max-w-sm">
+      </div>
+
+      <!-- Text -->
       <div>
-        <p calss="pl-7">Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our start, we've planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create habitats for wildlife, and combat global warming.</p>
-        <br>
-        <ol class="list-disc text-left pl-7">
-       <li>Restoration of natural habitats</li>
-       <li> Improvement of air quality</li>
-        <li>Support for local communities</li>
-      </ol>
+
+        <p class="text-[#1F2937] mb-4">
+          Green Earth is a global tree plantation initiative dedicated to fighting climate change. 
+          Since our start, we've planted over 500,000 trees worldwide. By joining our campaign, 
+          you help restore forests, create habitats for wildlife, and combat global warming.
+        </p>
+        <ul class="list-disc list-inside text-[#1F2937] space-y-2">
+          <li>Restoration of natural habitats</li>
+          <li>Improvement of air quality</li>
+          <li>Support for local communities</li>
+        </ul>
       </div>
     </div>
-
   </section>
+
 
 
    
