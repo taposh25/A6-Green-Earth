@@ -17,7 +17,7 @@
       referrerpolicy="no-referrer"
     />
 </head>
-<body >
+<body class="bg-[#f3fdf8]">
   <!-- navbar -->
   <nav class="bg-green-700 text-white">
   <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -73,8 +73,8 @@
 
 
 <!-- main section -->
-    <main class="container bg-[#f3fdf8] mx-auto p-6 flex gap-6">
-      <aside class="w-1/5">
+    <main class="container bg-[#f3fdf8] mt-12  mx-auto p-6 flex gap-6">
+      <aside class="w-1/5 ">
       <h2 class="text-xl text-left font-semibold mb-4">Categories</h2>
       <ul id="categories" class="space-y-2">
         <!-- Categories load dynamically -->
@@ -115,7 +115,6 @@
 
 
 
-
   <!-- About section -->
   <section class="bg-[#f3fdf8] py-12 px-6">
 
@@ -125,7 +124,7 @@
     
     <div class="max-w-[730px] flex mx-auto grid md:grid-cols-2 gap-8 items-center ">
 
-      <div class=" w-[330px] h-[330px] ">
+      <div class=" w-[330px] h-[330px] flex justify-center">
         <img src="./assets/about.png" alt="Tree" class="rounded-lg shadow-md w-full max-w-sm">
       </div>
 
@@ -171,6 +170,44 @@
     </div>
   </section>
 
+  <!-- Plant a Tree Today -->
+ <!-- Plant a Tree Today -->
+<!-- Plant a Tree Today -->
+<section class="bg-green-800 py-12 px-6">
+  <div class="max-w-lg mx-auto text-center bg-green-700 p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-white">Plant a Tree Today</h2>
+    <form class="space-y-4">
+      <input 
+        type="text" 
+        placeholder="Your Name" 
+        class="w-full text-[#1F2937] px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+      >
+      
+      <input 
+        type="email" 
+        placeholder="Your Email Address" 
+        class="w-full text-[#1F2937] px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+      >
+      
+      <!-- Number of Trees Dropdown -->
+      <select 
+        class="w-full text-[#1F2937] px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500 cursor-pointer"
+      >
+        <option value="">Number of Trees</option>
+        <option value="1">1 Tree - $5</option>
+        <option value="5">5 Trees - $25</option>
+        <option value="10">10 Trees - $50</option>
+      </select>
+      
+      <button 
+        type="submit" 
+        class="w-full bg-yellow-500 text-green-700 font-bold py-2 rounded-3xl hover:bg-yellow-500 shadow-md cursor-pointer"
+      >
+        Donate Now
+      </button>
+    </form>
+  </div>
+</section>
 
 
    

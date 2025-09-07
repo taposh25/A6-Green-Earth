@@ -44,12 +44,12 @@ async function loadTrees(category, isRandom = false) {
         <p class="text-sm text-slate-600">${tree.description.slice(0,80)}...</p>
         
         <div class="flex justify-between items-center mt-2">
-          <span class="badge badge-outline bg-green-100">${tree.category}</span>
+          <span class="badge badge-outline bg-green-200">${tree.category}</span>
           <span class="font-semibold">৳${tree.price}</span>
         </div>
 
         <button onclick="addToCart('${tree.name}',${tree.price})" 
-          class="btn btn-sm bg-green-600 text-white w-full mt-3">Add to Cart</button>
+          class="btn btn-sm bg-green-700 text-white w-full rounded-xl mt-3">Add to Cart</button>
       </div>
     </div>
   `).join("");
