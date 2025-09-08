@@ -10,28 +10,33 @@ async function loadCategories() {
   const data = await res.json();
   const categories = data.categories;
 
-  categoriesEl.innerHTML = categories.map(cat => `
-    <li>
-      <button onclick="loadTrees('${cat.id}', false)" 
-        class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-700 hover:text-white">
-        ${cat.category_name}
-      </button>
-    </li>
-  `).join("");
+
+
+categoriesEl.innerHTML = categories.map(cat => 
+  `<li>
+     <button onclick="loadTrees('${cat.id}', false)" class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-700 hover:text-white">
+       ${cat.category_name}  
+     </button>
+   </li>`
+).join("");
+
+  
 }
 
+
+
 // Load trees of a category
-async function loadTrees(category, isRandom = false) {
-  const url = category === "All Trees" 
+async function loadTrees(categoryId, isRandom = false) {
+  const url = categoryId === "All Trees" 
     ? `https://openapi.programming-hero.com/api/plants`
-    : `https://openapi.programming-hero.com/api/plants?category=${category}`;
+    : `https://openapi.programming-hero.com/api/category/${categoryId}`;
   
   const res = await fetch(url);
   const data = await res.json();
-  let trees = data.plants;
+  let trees = data.plants || data.data;  
 
-  // যদি র‍্যান্ডম চাই (ডিফল্ট লোড বা রিলোড হলে)
-  if (isRandom) {
+  // Randomly first 6 trees showing
+  if (isRandom && trees.length > 6) {
     trees = trees.sort(() => 0.5 - Math.random()).slice(0, 6);
   }
 
@@ -44,7 +49,7 @@ async function loadTrees(category, isRandom = false) {
         <p class="text-sm text-slate-600">${tree.description.slice(0,80)}...</p>
         
         <div class="flex justify-between items-center mt-2">
-          <span class="badge badge-outline bg-green-200">${tree.category}</span>
+          <span class="px-2 py-1 rounded-xl bg-green-200 text-sm">${tree.category}</span>
           <span class="font-semibold">৳${tree.price}</span>
         </div>
 
@@ -53,15 +58,19 @@ async function loadTrees(category, isRandom = false) {
       </div>
     </div>
   `).join("");
+
+
+  
 }
+
 
 // Add to Cart
 function addToCart(name, price) {
-  cart.push({id: Date.now(), name, price}); // unique id দিলাম
+  cart.push({id: Date.now(), name, price}); 
   renderCart();
 }
 
-// Render Cart
+// Render Cart create
 function renderCart() {
   cartItemsEl.innerHTML = cart.map(item => `
     <div class="flex justify-between items-center bg-white shadow-md rounded-lg p-3 mb-2">
@@ -84,6 +93,9 @@ function removeFromCart(id) {
   renderCart();
 }
 
+
+
+
 // Modal open
 function openModal(name,img,desc,cat,price) {
   document.getElementById("modalTitle").textContent = name;
@@ -96,4 +108,4 @@ function openModal(name,img,desc,cat,price) {
 
 // Load default
 loadCategories();
-loadTrees("All Trees", true); // ডিফল্টে ৬টা র‍্যান্ডম ট্রি লোড হবে
+loadTrees("All Trees", true); 
