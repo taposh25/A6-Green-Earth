@@ -75,22 +75,22 @@
 <!-- main section -->
     <main class="container bg-[#f3fdf8] mt-12  mx-auto p-6 flex gap-6">
       <aside class="w-1/5 ">
-      <h2 class="text-xl text-left font-semibold mb-4">Categories</h2>
+      <h2 class="text-xl text-[##000000] text-left font-semibold mb-4">Categories</h2>
       <ul id="categories" class="space-y-2">
-        <!-- Categories load dynamically -->
+     
       </ul>
     </aside>
 
         <!-- Card Section -->
     <section class="w-4/5">
-      <h2 class="text-2xl font-bold text-center mb-6">Choose Your Trees</h2>
+      <h2 class="text-2xl text-[#1F2937] font-bold text-center mb-6">Choose Your Trees</h2>
       <div id="cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Cards load dynamically -->
+      
       </div>
     </section>
 
 
-        <!-- Cart -->
+        <!--Right side Add to Cart -->
     <aside class="w-1/5 bg-white p-4 rounded-lg shadow">
       <h2 class="text-lg font-bold mb-4">Your Cart</h2>
       <ul id="cartItems" class="space-y-2"></ul>
@@ -110,9 +110,22 @@
     </form>
   </dialog>
 
-  <!-- Add to cart modal -->
+  <!-- Add to cart modal, on click add to cart-->
 
-  
+<dialog id="cartModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box  bg-black">
+    <h3 id="cartModalMsg" class="text-lg font-bold text-white"></h3>
+   
+    <div class="modal-action">
+      <form method="dialog">
+        
+        <button class="btn">Ok</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
 
 
   </main>
@@ -126,15 +139,14 @@
           About the Campaign
       </h1>
     
-    <div class="max-w-[730px] flex mx-auto grid md:grid-cols-2 gap-8 items-center ">
-
+      <div class="max-w-[730px] flex mx-auto grid md:grid-cols-2 gap-8 items-center ">
+       <!-- left side image -->
       <div class=" w-[330px] h-[330px] flex justify-center">
         <img src="./assets/about.png" alt="Tree" class="rounded-lg shadow-md w-full max-w-sm">
       </div>
 
-      
+      <!-- Right side text -->
       <div>
-
         <p class="text-[#1F2937] mb-4">
           Green Earth is a global tree plantation initiative dedicated to fighting climate change. 
           Since our start, we've planted over 500,000 trees worldwide. By joining our campaign, 
@@ -157,7 +169,7 @@
       <h2 class="text-2xl font-bold mb-8 text-[#1F2937]">Our Impact</h2>
       <!-- 3 cards parent div -->
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Cards -->
+        <!-- 3 Cards -->
         <div class="bg-white p-6 rounded-lg shadow-md">
           <h3 class="text-2xl font-semibold text-[#15803D]">500K+</h3>
           <p class=" text-[#1F2937]">Trees Planted</p>
@@ -174,7 +186,7 @@
     </div>
   </section>
 
-  <!-- Plant a Tree Today -->
+  <!-- Plant a Tree Today login box -->
 
 <section class="bg-green-800 py-12 px-6">
   <div class="max-w-lg mx-auto text-center bg-green-700 p-8 rounded-lg shadow-md">
@@ -214,7 +226,7 @@
 
 
    
-    <!-- Footer -->
+    <!-- Footer Section-->
   <footer class="bg-green-900 text-white py-6 text-center">
     <p>&copy; 2025 Green Earth. All Rights Reserved.</p>
   </footer>

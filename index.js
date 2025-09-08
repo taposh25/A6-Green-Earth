@@ -4,29 +4,27 @@ const cartItemsEl = document.getElementById("cartItems");
 const cartTotalEl = document.getElementById("cartTotal");
 let cart = [];
 
+
 // Load categories
 async function loadCategories() {
   const res = await fetch('https://openapi.programming-hero.com/api/categories');
   const data = await res.json();
   const categories = data.categories;
 
-
-
-categoriesEl.innerHTML = categories.map(cat => 
-  `<li>
-     <button onclick="loadTrees('${cat.id}', false)" class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-700 hover:text-white">
-       ${cat.category_name}  
-     </button>
-   </li>`
-).join("");
-
-  
+  categoriesEl.innerHTML = categories.map(cat => 
+    `<li>
+       <button 
+         onclick="loadTrees('${cat.id}', false, this)" 
+         class="category-btn w-full text-left px-3 py-2 rounded hover:bg-green-700 hover:text-white">
+         ${cat.category_name}  
+       </button>
+     </li>`
+  ).join("");
 }
 
 
-
 // Load trees of a category
-async function loadTrees(categoryId, isRandom = false) {
+async function loadTrees(categoryId, isRandom = false, btn = null) {
   const url = categoryId === "All Trees" 
     ? `https://openapi.programming-hero.com/api/plants`
     : `https://openapi.programming-hero.com/api/category/${categoryId}`;
@@ -40,12 +38,21 @@ async function loadTrees(categoryId, isRandom = false) {
     trees = trees.sort(() => 0.5 - Math.random()).slice(0, 6);
   }
 
+  // Active button highlight 
+  document.querySelectorAll(".category-btn").forEach(b => {
+    b.classList.remove("bg-green-700", "text-white");
+  });
+  if (btn) {
+    btn.classList.add("bg-green-700", "text-white");
+  }
+
+  // Render cards create
   cardsEl.innerHTML = trees.map(tree => `
     <div class="card bg-white shadow rounded-lg">
-      <figure><img src="${tree.image}" alt="${tree.name}" class="h-40 w-full object-cover"/></figure>
+      <figure><img src="${tree.image}" alt="${tree.name}" class="h-40 w-full  object-cover"/></figure>
       <div class="card-body p-4">
         <h2 onclick="openModal('${tree.name}','${tree.image}','${tree.description}','${tree.category}','${tree.price}')" 
-            class="card-title cursor-pointer text-green-700 hover:underline">${tree.name}</h2>
+            class="card-title cursor-pointer text-[#1F2937] hover:underline">${tree.name}</h2>
         <p class="text-sm text-slate-600">${tree.description.slice(0,80)}...</p>
         
         <div class="flex justify-between items-center mt-2">
@@ -58,17 +65,27 @@ async function loadTrees(categoryId, isRandom = false) {
       </div>
     </div>
   `).join("");
-
-
-  
 }
 
+
+
+// Add to Cart
+// function addToCart(name, price) {
+//   cart.push({id: Date.now(), name, price}); 
+//   renderCart();
+// }
 
 // Add to Cart
 function addToCart(name, price) {
   cart.push({id: Date.now(), name, price}); 
   renderCart();
+
+
+  document.getElementById("cartModalMsg").textContent = `${name} has been added to the cart.`;
+  
+  document.getElementById("cartModal").showModal();
 }
+
 
 // Render Cart create
 function renderCart() {
@@ -79,7 +96,7 @@ function renderCart() {
         <p class="text-sm text-gray-500">৳${item.price}</p>
       </div>
       <button onclick="removeFromCart(${item.id})" 
-        class="text-red-500 font-bold text-lg hover:text-red-700">❌</button>
+        class="text-red-500 cursor-pointer font-bold text-lg ">❌</button>
     </div>
   `).join("");
 
