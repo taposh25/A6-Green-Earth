@@ -61,7 +61,7 @@ async function loadTrees(categoryId, isRandom = false, btn = null) {
         </div>
 
         <button onclick="addToCart('${tree.name}',${tree.price})" 
-          class="btn btn-sm bg-green-700 text-white w-full rounded-xl mt-3">Add to Cart</button>
+          class="btn btn-sm bg-green-700 text-white w-full rounded-2xl mt-3">Add to Cart</button>
       </div>
     </div>
   `).join("");
@@ -75,16 +75,33 @@ async function loadTrees(categoryId, isRandom = false, btn = null) {
 //   renderCart();
 // }
 
+
 // Add to Cart
+
+
+let pendingItem = null; 
+
 function addToCart(name, price) {
-  cart.push({id: Date.now(), name, price}); 
-  renderCart();
+
+  pendingItem = { id: Date.now(), name, price };
 
 
-  document.getElementById("cartModalMsg").textContent = `${name} has been added to the cart.`;
-  
+  document.getElementById("cartModalMsg").textContent = 
+    `${name} has been added to the cart. Click OK to confirm.`;
+
+
   document.getElementById("cartModal").showModal();
 }
+
+
+document.getElementById("confirmAddBtn").addEventListener("click", () => {
+  if (pendingItem) {
+    cart.push(pendingItem); 
+    renderCart(); 
+    pendingItem = null; 
+  }
+});
+
 
 
 // Render Cart create
